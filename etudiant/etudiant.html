@@ -82,7 +82,7 @@
             
             <button id="ajoute_etd" class="w-[20%] h-[50%] bg-gray-800 mr-4 rounded-lg text-white rounded-lg hover:mb-1">+ Ajoute un etudiant</button>
         </div>
-        <div class="bg-gray-800 w-full h-screen rounded-4xl flex-col overflow-y-auto mt-5">
+        <div class="bg-gray-800 w-full h-100 rounded-4xl flex-col overflow-y-auto mt-5">
             <table class="min-w-full divide-y divide-white">
                 <thead>
                     <tr class="bg-slate-700 text-center h-15">
@@ -92,7 +92,7 @@
                             <th class="text-center text-gray-400 uppercase ">actions</th>
                         </tr>
                     </thead>
-                    <tbody class=" divide-y divide-bg-white text-lg text-center">
+                    <tbody id="table_etd" class=" divide-y divide-bg-white text-lg text-center">
                         <tr class="text-center">
                         <td id="etud_nom">fathi leghris
                         </td>
@@ -101,10 +101,10 @@
                             group 12
                         </td>
                         <td class="text-xl">
-                            <button id="suppreme_etd">
+                            <button onclick="deleterow(this)">
                                 <i class="pr-10 fa-solid fa-trash-can hover:drop-shadow-[0_4px_8px_rgba(255,255,250,0.8)]"></i>
                             </button>
-                            <button id="modifie_etd">
+                            <button onclick="editrow(this)" id="modifie_etd">
                                 <i class="fa-solid fa-pen-to-square hover:drop-shadow-[0_4px_8px_rgba(255,255,250,0.8)]"></i>
                             </button>
                         </td>
@@ -112,8 +112,30 @@
                 </tbody>
             </table>
         </div>
-        <div class="relative min-h-screen flex items-center p-4">
-            <div></div>
+        <!--Modal-->
+        <div id="modal" class="fixed inset-0 hidden flex items-center justify-center z-50">
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+            <!-- Modal Box -->
+             <div class="relative bg-gray-800 rounded-xl p-6 w-100 text-center shadow-xl flex flex-col justify-between gap-6">
+                <p id="modal_mssg" class="text-2xl">ajoute un etudiant: </p>
+                <input type="text" id="new_nom" placeholder="Nom etudiant" class="border p-2 rounded-xl"/>
+                <input type="text" id="new_email" placeholder="Email etudiant" class="border p-2 rounded-xl"/>
+                <select id="new_grp" class="p-2 w-64 border bg-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">Sélectionne group</option>
+                    <option value="groupe 01">groupe 01</option>
+                    <option value="groupe 02">groupe 02</option>
+                    <option value="groupe 03">groupe 03</option>
+                    <option value="groupe 04">groupe 04</option>
+                </select>
+                <div class="mt-6 flex justify-around">
+                    <button id="annule_etd" class="px-4 py-2 bg-red-500 text-white rounded-lg">
+                        Annuler
+                    </button>
+                    <button id="save_etd" class="px-4 py-2 bg-blue-600 text-white rounded-lg">
+                        Sauvegarder
+                    </button>
+             </div>
         </div>
 
     </div>
