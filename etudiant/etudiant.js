@@ -1,7 +1,14 @@
 // variables general ---------------------------------------------------
 let total_etd = document.getElementById("etudTotal");
-let actif_etd = document.getElementById("etudActif") = 0;
+let actif_etd = 0;
 let inactif_etd = document.getElementById("etudInactif");
+
+let students = JSON.parse(localStorage.getItem("students"));
+if (!idcount) {
+    localStorage.setItem("idcount", 0);
+    }
+
+
 // buttons --------------------------------------------------------------
 let ajoute_etd = document.getElementById("ajoute_etd");
 let annule_ajoute = document.getElementById("annule_etd");
@@ -10,15 +17,16 @@ let suppreme_etd = document.getElementById("suppreme_etd")
 let modifie_etd = document.getElementById("modifie_etd");
 // input ----------------------------------------------------------------
 let search = document.getElementById("search_home");
+
 // other ----------------------------------------------------------------
 let table = document.getElementById("table_etd");
 let modal = document.getElementById("modal");
 
-
 // fonctions ------------------------------------------------------------
 ajoute_etd.onclick = () => {
-    document.getElementById("modal_mssg").textContent = "ajoute un etudiant: "
     modal.classList.toggle("hidden");
+    document.getElementById("modal_mssg").textContent = "ajoute un etudiant: ";
+    document.getElementById("new_id").textContent = `etudiant id: ${idcount+1}`
     document.getElementById("new_nom").value= "";
     document.getElementById("new_email").value = "";
     document.getElementById("new_grp").value = "";
@@ -28,26 +36,22 @@ annule_ajoute.onclick = () => {
     modal.classList.toggle("hidden")
 };
 
-save_ajoute.onclick = function() {
+save_ajoute.onclick = () => {
+    modal.classList.toggle("hidden");
     let nom_input = document.getElementById("new_nom");
     let email_input = document.getElementById("new_email");
     let groupe_input = document.getElementById("new_grp");
 
-    if (!localStorage.getItem("students")) {
-    localStorage.setItem("students", JSON.stringify([]));
-    }
-
     let students = JSON.parse(localStorage.getItem("students"));
+
     students.push ({
         nom: nom_input.value,
         email: email_input.value,
         groupe: groupe_input.value,
+        id: idcount++
     });
     displayStudents(students);
-    total_etd = students.length;
     localStorage.setItem("students" , JSON.stringify(students));
-    modal.classList.toggle("hidden");
-
 }
 
 function displayStudents(tab){
@@ -58,6 +62,7 @@ function displayStudents(tab){
         const tr = document.createElement("tr");
         tr.className = "text-center";
         tr.innerHTML = `
+            <td id="etud_nom">${student.id}</td>
             <td id="etud_nom">${student.nom}</td>
             <td id="etud_email">${student.email}</td>
             <td id="etud_group">${student.groupe}</td>
@@ -77,7 +82,8 @@ function deleterow(btn) {
     const row = btn.closest("tr");
     const cells = row.querySelectorAll("td");
     let students = JSON.parse(localStorage.getItem("students"));
-    students = students.filter(st => st.nom !== cells[0].textContent );
+    console.log(cells[0].textContent);
+    students = students.filter(st => (st.id != cells[0].textContent)&&(st.nom != cells[1].textContent));
     localStorage.setItem("students" , JSON.stringify(students));
     row.remove();
 }
@@ -90,12 +96,9 @@ function editrow(btn) {
     document.getElementById("new_email").value = cells[1].textContent;
     document.getElementById("new_grp").value = cells[2].textContent;
     modal.classList.toggle("hidden");
-    
+    save_ajoute.onclick = function (){
+           
+    }
 }
 
-//still need to (storage the edit) and also part about (variables total) and (searche)
-
-
-
-
-
+//still need to (storage the edit and id) and also part about (variables total) and (searche)
