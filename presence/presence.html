@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="flex gap-[10px]">
+      <div class="left-0 w-[25%]  bg-gray-800 text-white h-auto">
+        <ul class="flex flex-col">
+          <h2
+            class="text-4xl text-center hover: font-bold p-4 border-b border-gray-700"
+          >
+            ENAA
+          </h2>
+          <li class="block h-full w-full leading-[65px] text-[20px] 
+                    pl-10 border-box border-top border-top-white/10 border-b 
+                    border-b-black transition-all duration-400 gap-20 hover:pl-[50px]">
+                        <i class="fa-regular fa-house"></i>
+                        <a href="../home/home.html" class="relative left-3">Tableau de bord</a>
+                </li>
+                <li class="block h-full w-full leading-[65px] text-[20px] 
+                    pl-10 border-box border-top border-top-white/10 border-b 
+                    border-b-black transition-all duration-400 hover:pl-[50px]">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <a href="../etudiant/etudiant.html" class="relative left-3">Etudiants</a>
+                </li>
+                <li class="block h-full w-full leading-[65px] text-[20px] 
+                    pl-10 border-box border-top border-top-white/10 border-b 
+                    border-b-black transition-all duration-400 hover:pl-[50px]">
+                        <i class="fa-solid fa-user"></i></i>
+                        <a href="../presence/presence.html" class="relative left-3">Presence</a>
+                </li>
+                <li class="block h-full w-full leading-[65px] text-[20px] 
+                    pl-10 border-box border-top border-top-white/10 border-b 
+                    border-b-black transition-all duration-400 hover:pl-[50px]">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <a href="../historique/historique.html" class="relative left-3">Historique</a>
+                </li>
+        </ul>
+      </div>
+      <div class="bg-gray-800 w-[75%] m-10 rounded-[30px]">
+        <div
+          class="flex justify-between p-7 border-b border-white border-solid"
+        >
+          <div>
+            <h1 class="text-white text-[2rem] mb-6">
+              Prise de Presence Quotidienne
+            </h1>
+            <button class="text-white bg-violet-600 p-4 rounded">
+              Enregistrer le Presence
+            </button>
+          </div>
+          <div>
+            <input
+              type="text"
+              name="search"
+              class="bg-white p-2 w-[17rem]"
+              placeholder="Rechercher..."
+            />
+          </div>
+        </div>
+        <div class="p-7">
+          <h1 class="text-white text-[2rem] mb-4">Selectionner La Date</h1>
+          <input type="date" name="date" id="dateinput" class="bg-white px-5" />
+        </div>
+        <div class="p-7" id="attendance-container"></div>
+
+      </div>
+    </div>
+    <script src="presence.js"></script>
+  </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <title>Document</title>
+</head>
+<body class="felx-row">
+    <div class="fixed left-0 w-64 h-screen bg-gray-800 text-white">
+            <h2 class="text-4xl text-center p-4 border-b border-gray-700">ENAA </h2>
+            <ul>
+                <li class="block h-full w-full leading-[65px] text-[20px] 
+                    pl-10 border-box border-top border-top-white/10 border-b 
+                    border-b-black transition-all duration-400 gap-20 hover:pl-[50px]">
+                        <i class="fa-regular fa-house"></i>
+                        <a href="../home/home.html" class="relative left-3">Tableau de bord</a>
+                </li>
+                <li class="block h-full w-full leading-[65px] text-[20px] 
+                    pl-10 border-box border-top border-top-white/10 border-b 
+                    border-b-black transition-all duration-400 hover:pl-[50px]">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <a href="etudiant.html" class="relative left-3">Etudiants</a>
+                </li>
+                <li class="block h-full w-full leading-[65px] text-[20px] 
+                    pl-10 border-box border-top border-top-white/10 border-b 
+                    border-b-black transition-all duration-400 hover:pl-[50px]">
+                        <i class="fa-solid fa-user"></i></i>
+                        <a href="../presence/presence.html "class="relative left-3">Presence</a>
+                </li>
+                <li class="block h-full w-full leading-[65px] text-[20px] 
+                    pl-10 border-box border-top border-top-white/10 border-b 
+                    border-b-black transition-all duration-400 hover:pl-[50px]">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <a href="../historique/historique.html" class="relative left-3">Historique</a>
+                </li>
+            </ul>
+    </div>
+    <div class="flex-col ml-64 min-h-screen p-8 text-white ">
+        <!-- Main content of the etudiant.html page goes here --> 
+        <div class="bg-gray-800 w-full h-15 rounded-lg mb-5 flex items-center justify-center">
+            <h1 class="text-4xl"> Gestion des Etudiants</h1>
+        </div>
+        <div class="w-full h-40 flex flex-row align-center justify-around gap-[5%] text-white">
+            <div class="bg-gray-800 w-[25%] h-full flex flex-col justify-around items-center rounded-4xl">
+                <h1 class="text-center text-2xl">Total Etudiants</h1>
+                <div class="flex flex-row align-center justify-center gap-15 text-4xl">
+                    <!--Total etudiants hereeee-->
+                    <h1 id="etudTotal">00</h1>
+                    <span class="bg-slate-700 p-[6px] rounded-[20px]">
+                        <i class="pl-1 fa-solid fa-users mr-2"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="bg-gray-800 w-[25%] h-full h-full flex flex-col justify-around items-center rounded-4xl">
+                <h1 class="text-center text-2xl">Etudiants Actifs</h1>
+                <div class="flex flex-row align-center justify-center gap-15 text-4xl">
+                    <!--Total etudiants actifs hereeee-->
+                    <h1 id="etudActif">00</h1>
+                    <span class="bg-slate-700 p-[6px] rounded-[20px]">
+                        <i class="fa-solid fa-user-check"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="bg-gray-800 w-[25%] h-full h-full flex flex-col justify-around items-center rounded-4xl">
+                <h1 class="text-center text-2xl">Etudiants Inactifs</h1>
+                <div class="flex flex-row align-center justify-center gap-15 text-4xl">
+                    <!--Total etudiants inactifs hereeee-->
+                    <h1 id="etudInactif">00</h1>
+                    <span class="bg-slate-700 p-[6px] rounded-[20px]">
+                        <i class="fa-solid fa-user-xmark"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="w-full h-20 flex flex-row justify-between items-center">
+            <span class="w-[30%] h-[50%] ml-4 bg-gray-800 text-white rounded-lg flex flex-row items-center hover:mb-1">
+                <button id="search_btn" class="pl-2 fa-solid fa-magnifying-glass text-3xl opacity-70"></button>
+                <input id="search" class="pl-1 w-full h-full rounded-lg" type="text" placeholder="Rechercher...">
+            </span>
+            
+            <button id="ajoute_etd" class="w-[20%] h-[50%] bg-gray-800 mr-4 rounded-lg text-white rounded-lg hover:mb-1">+ Ajoute un etudiant</button>
+        </div>
+        <div class="bg-gray-800 w-full h-100 rounded-4xl flex-col overflow-y-auto mt-5">
+            <table class="min-w-full divide-y divide-white">
+                <thead>
+                    <tr class="bg-slate-700 text-center h-15">
+                            <th class="text-center text-gray-400 uppercase ">etudiant id</th>
+                            <th class="text-center text-gray-400 uppercase ">Nom complete</th>
+                            <th class="text-center text-gray-400 uppercase ">email</th>
+                            <th class="text-center text-gray-400 uppercase ">group</th>
+                            <th class="text-center text-gray-400 uppercase ">actions</th>
+                    </tr>
+                </thead>
+                    <tbody id="table_etd" class=" divide-y divide-bg-white text-lg text-center">
+                    </tbody>
+            </table>
+        </div>
+        <!--Modal-->
+        <div id="modal" class="fixed inset-0 hidden flex items-center justify-center z-50">
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+            
+                <div class="relative bg-gray-800 rounded-xl p-6 w-100 text-center shadow-xl flex flex-col justify-between gap-6">
+                    <p id="modal_mssg" class="text-2xl">ajoute un etudiant: </p>
+                    <h2 id="new_id" class="border p-2 rounded-xl"> here goes id </h2>
+                    <input type="text" id="new_nom" placeholder="Nom etudiant" class="border p-2 rounded-xl"/>
+                    <input type="text" id="new_email" placeholder="Email etudiant" class="border p-2 rounded-xl"/>
+                    <select id="new_grp" class="p-2 w-64 border bg-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">Sélectionne group</option>
+                        <option value="groupe 01">groupe 01</option>
+                        <option value="groupe 02">groupe 02</option>
+                        <option value="groupe 03">groupe 03</option>
+                        <option value="groupe 04">groupe 04</option>
+                    </select>
+                    <div class="mt-6 flex justify-around">
+                        <button id="annule_etd" class="px-4 py-2 bg-red-500 text-white rounded-lg">
+                            Annuler
+                        </button>
+                        <button id="save_etd" class="px-4 py-2 bg-blue-600 text-white rounded-lg">
+                            Sauvegarder
+                        </button>
+                </div>
+                </div>
+
+    </div>
+
+    <script src="etudiant.js"></script>
+</body>
+</html>
