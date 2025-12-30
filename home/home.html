@@ -1,12 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <title>Dashboard ENAA</title>
 </head>
-<body>
-    
-    <script src="main.js"></script>
+
+<body class="bg-gray-100">
+  <div class="flex gap-5">
+
+    <div class="w-[20%] min-h-screen bg-gray-800 text-white">
+      <ul class="flex flex-col">
+        <h2 class="text-4xl text-center font-bold p-6 border-b border-gray-700">
+          ENAA
+        </h2>
+
+        <li class="pl-10 leading-[65px] text-xl border-b border-gray-700 hover:pl-[50px] transition-all">
+          <i class="fa-solid fa-house"></i>
+          <span class="ml-3">Tableau de bord</span>
+        </li>
+
+        <li class="pl-10 leading-[65px] text-xl border-b border-gray-700 hover:pl-[50px] transition-all">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span class="ml-3">Etudiants</span>
+        </li>
+
+        <li class="pl-10 leading-[65px] text-xl border-b border-gray-700 hover:pl-[50px] transition-all">
+          <i class="fa-solid fa-user"></i>
+          <span class="ml-3">Présence</span>
+        </li>
+
+        <li class="pl-10 leading-[65px] text-xl border-b border-gray-700 hover:pl-[50px] transition-all">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <span class="ml-3">Historique</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="w-[80%] pr-10">
+
+      <h1 class="text-5xl font-serif border-b-4 p-6 mb-8">
+        Statistiques
+      </h1>
+
+      <div class="grid grid-cols-3 gap-6 mb-12">
+        <div class="bg-[#1a2341] text-white rounded-xl p-6 flex justify-between items-center">
+          <div>
+            <h2 class="text-xl mb-4">Taux d'absence</h2>
+            <p id="taux_absence" class="text-5xl text-red-400">0%</p>
+          </div>
+          <i class="fa-solid fa-square-xmark text-5xl text-red-500"></i>
+        </div>
+
+        <div class="bg-[#1a2341] text-white rounded-xl p-6 flex justify-between items-center">
+          <div>
+            <h2 class="text-xl mb-4">Taux de retard</h2>
+            <p id="taux_retard" class="text-5xl text-yellow-400">0%</p>
+          </div>
+          <i class="fa-solid fa-hourglass-half text-5xl text-yellow-400"></i>
+        </div>
+
+        <div class="bg-[#1a2341] text-white rounded-xl p-6 flex justify-between items-center">
+          <div>
+            <h2 class="text-xl mb-4">Taux de présence</h2>
+            <p id="taux_presence" class="text-5xl text-green-400">0%</p>
+          </div>
+          <i class="fa-regular fa-square-check text-5xl text-green-400"></i>
+        </div>
+      </div>
+
+      <!-- TOP 3 ABSENTS -->
+      <h2 class="text-3xl font-bold border-b-4 mb-5">
+        <i class="fa-solid fa-ranking-star text-amber-400"></i>
+        Top 3 - Plus Absents
+      </h2>
+
+      <table class="w-full bg-slate-900 rounded-xl overflow-hidden mb-12">
+        <thead class="bg-slate-800 text-white">
+          <tr>
+            <th class="p-4 text-left">RANG</th>
+            <th class="p-4 text-left">ETUDIANTS</th>
+            <th class="p-4 text-left">ABSENCES</th>
+          </tr>
+        </thead>
+        <tbody id="display-abs">
+        </tbody>
+      </table>
+
+      <!-- TOP 3 RETARDS -->
+      <h2 class="text-3xl font-bold border-b-4 mb-5">
+        <i class="fa-solid fa-hourglass-half text-red-500"></i>
+        Top 3 - Plus en retard
+      </h2>
+
+      <table class="w-full bg-slate-900 rounded-xl overflow-hidden">
+        <thead class="bg-slate-800 text-white">
+          <tr>
+            <th class="p-4 text-left">RANG</th>
+            <th class="p-4 text-left">ETUDIANTS</th>
+            <th class="p-4 text-left">RETARDS</th>
+          </tr>
+        </thead>
+        <tbody id="display-ret">
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <script src="home.js"></script>
 </body>
 </html>
